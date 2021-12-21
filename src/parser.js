@@ -10,16 +10,8 @@ let ASCII_LEFT_BRACKET = 91
 let ASCII_RIGHT_BRACKET = 93
 
 function fromCharCode (uint8Array) {
-  const batchSize = 10240
-  var strings = []
-
-  for (var i = 0; i < uint8Array.length; i += batchSize) {
-    const begin = i
-    const end = Math.min(i + batchSize, uint8Array.length)
-    strings.push(String.fromCharCode.apply(null, uint8Array.subarray(begin, end)))
-  }
-
-  return strings.join('')
+  const decoder = new TextDecoder()
+  return decoder.decode(uint8Array)
 }
 
 function fromCharCodeTrimmed (uint8Array) {

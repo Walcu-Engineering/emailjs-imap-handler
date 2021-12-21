@@ -1,7 +1,7 @@
 import parser from './parser'
 import mimetorture from '../fixtures/mimetorture'
 
-const str2arr = str => new Uint8Array(str.split('').map(char => char.charCodeAt(0)))
+const str2arr = str => new Uint8Array(Buffer.from(str))
 
 describe('IMAP Command Parser', function () {
   describe('get tag', function () {
