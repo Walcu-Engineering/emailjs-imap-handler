@@ -71,7 +71,13 @@ export default function (response, asArray, isLogging) {
         break
       case 'TEXT':
       case 'SEQUENCE':
-        resp += node.value || ''
+        if (node.chunk) {
+          resp = resp.slice(0, -1) + '\r\n' // Remove the last trailing space and add a newline
+          respParts.push(resp)
+          resp = node.value || ''
+        } else {
+          resp += node.value || ''
+        }
         break
 
       case 'NUMBER':
