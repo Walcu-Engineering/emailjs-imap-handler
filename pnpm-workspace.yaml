@@ -1,0 +1,5 @@
+allowBuilds:
+  core-js: false
+  nodemon: false
+  pre-commit: false
+  spawn-sync: false
